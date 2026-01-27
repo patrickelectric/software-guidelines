@@ -11,6 +11,40 @@ When contributing to projects owned by other entities, adhere to any guidelines 
  - Lead with uppercase for classes (eg. `MyClass`)
  - Private members should be prefixed with an underscore (eg. `_myPrivateVariable`)
 - When naming files, variables, methods etc. avoid abbreviations and ambiguous/vague identifiers; be verbose to the point that it is totally clear (eg. minTemperature instead of minTemp, degreesC rather than degC, firmware instead of fw). There _may_ be exceptions for abbreviations that are *especially common and clear* like `min` and `max`. The point is to leave behind absolutely zero ambiguity and to increase readability and understanding, at the small price of a few extra characters.
+
+### Getter and Setter Naming (Qt Style)
+
+**Getters:** Do NOT use the `get` prefix. Use the bare property name directly.
+```cpp
+// Bad
+std::string getName();
+int getWidth();
+
+// Good
+std::string name();
+int width();
+```
+
+**Setters:** Use the `set` prefix.
+```cpp
+void setName(const std::string& name);
+void setWidth(int width);
+```
+
+**Boolean getters** follow specific rules:
+
+| Type | Convention | Examples |
+|------|------------|----------|
+| Adjectives | `is` prefix | `isChecked()`, `isEmpty()`, `isMovingEnabled()` |
+| Adjectives on plural nouns | No prefix | `scrollBarsEnabled()` (not `areScrollBarsEnabled()`) |
+| Verbs | No prefix, no third person `-s` | `acceptDrops()` (not `acceptsDrops()`) |
+| Nouns | Generally no prefix | `autoCompletion()`, `boundaryChecking()` |
+| Misleading without prefix | `is` prefix | `isOpenGLAvailable()`, `isDialog()` |
+
+**Setter names** are derived from getters by removing any `is` prefix and adding `set`:
+- `isChecked()` → `setChecked()`
+- `scrollBarsEnabled()` → `setScrollBarsEnabled()`
+
 - Use [astyle](http://astyle.sourceforge.net/astyle.html)!
     - Use "One True Brace Style" (--style=otbs)
 - Regardless of the language, always use double quotes for strings, single quotes for characters
@@ -72,4 +106,6 @@ Style configuration for *code*:
 
 ## Reference
 
-- [google style guide](https://google.github.io/styleguide/cppguide.html)
+- [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+- [Qt API Design Principles](https://wiki.qt.io/API_Design_Principles)
+- [Kate Gregory - Naming is Hard: Let's Do Better (CppCon 2019)](https://www.youtube.com/watch?v=MBRoCdtZOYg)
