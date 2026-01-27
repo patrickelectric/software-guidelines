@@ -35,6 +35,59 @@ When expanding or updating these guidelines, take in mind that:
 - Low-level, tricky, close-to-the-hardware, error-prone, expert-only code/features should only be used when encapsulated over higher-level facilities and abstraction layers.
 - Don't leak !
 
+## Code Practices
+
+### Encapsulate Magic Variables
+Replace unexplained numeric literals with named constants and enums. This clarifies intent for reviewers and future maintainers.
+
+Bad:
+```cpp
+start_communication(0, 1, 232);
+```
+
+Good:
+```cpp
+start_communication(vehicle_id, component_id, Messages::RequestStatus);
+```
+
+### Minimize Function Arguments
+Reduce parameter lists by using setter methods or aggregate initialization. Rather than passing numerous values to constructors, apply individual setters or designated initializers for improved readability and maintainability.
+
+Use setter methods:
+```cpp
+vehicle->setNumberOfTires(4);
+vehicle->setColor(Colors::Blue);
+```
+
+Use C++20 designated initializers:
+```cpp
+Vehicle vehicle = {
+    .tires = 4,
+    .color = Colors::Blue,
+    .weight = 1200
+};
+```
+
+Use user-defined literals (C++11+) for clarity:
+```cpp
+auto distance = 613_km;
+auto weight = 1.2_tn;
+```
+
+### Encapsulate Code Blocks
+Break functions into smaller, focused methods with descriptive names. This approach eliminates the need for explanatory comments, as the function name does the job for free.
+
+### Comment Judiciously
+Avoid redundant comments that merely restate code. One of the most important skills about writing comments, is to know when not to write it. Reserve comments for:
+- Complex logic requiring external context (like datasheets)
+- Non-obvious algorithms or business rules
+- Links to relevant documentation or specifications
+
+Avoid comments that:
+- Restate what the code clearly does
+- Describe obvious operations
+- Become outdated and misleading
+
 ## Documentation
 
 Code should be well documented. Strive to make it easy for a new developer to pick up where you left off. Well documented patches will also facilitate and expedite code review and the software development process.
@@ -88,3 +141,21 @@ Take time maintain your education on modern best practices for your software pro
   - Performance: When and where is necessary.
   - Simplicity: Be simple when possible, break code steps if necessary.
   - Portability: Take in mind that the code runs and could run in different platforms.
+
+## References
+
+### CppCon Talks
+- [Kate Gregory - Naming is Hard: Let's Do Better (2019)](https://www.youtube.com/watch?v=MBRoCdtZOYg)
+- [Kate Gregory - Simplicity: Not Just For Beginners (2018)](https://www.youtube.com/watch?v=n0Ak6xtVXno)
+- [Kate Gregory - What Do We Mean When We Say Nothing At All? (2018)](https://www.youtube.com/watch?v=kYVxGyido9g)
+- [Kate Gregory - 10 Core Guidelines You Need to Start Using Now (2017)](https://www.youtube.com/watch?v=XkDEzfpdcSg)
+- [Walter E. Brown - Whitespace ≤ Comments << Code (2017)](https://www.youtube.com/watch?v=NLebZ3XT92E)
+- [Lars Knoll - Qt as a C++ Framework (2017)](https://www.youtube.com/watch?v=YWiAUUblD34)
+
+### API Design
+- [The Little Manual of API Design - Jasmin Blanchette](https://people.mpi-inf.mpg.de/~jblanche/api-design.pdf)
+- [Qt API Design Principles](https://wiki.qt.io/API_Design_Principles)
+- [Designing Qt-Style C++ APIs - Matthias Ettrich](https://doc.qt.io/archives/qq/qq13-apis.html)
+
+### Patrick posts
+- [How to rock: First tips](https://patrickelectric.work/blog/2020/how-to-rock-first-tips/)
