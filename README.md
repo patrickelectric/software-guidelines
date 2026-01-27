@@ -6,6 +6,7 @@
 - [Style](guidelines/style.md)
 - [Version Control](guidelines/version-control.md)
 - [Communication](guidelines/communication.md)
+- [AI Prompting](guidelines/ai-prompting.md)
 
 ## Tools, Tips, and Tricks
 
