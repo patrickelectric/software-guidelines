@@ -78,7 +78,7 @@ auto weight = 1.2_tn;
 Break functions into smaller, focused methods with descriptive names. This approach eliminates the need for explanatory comments, as the function name does the job for free.
 
 ### Comment Judiciously
-Avoid redundant comments that merely restate code. One of the most important skills about writing comments, is to know when not to write it. Reserve comments for:
+Avoid redundant comments that merely restate code. One of the most important skills about writing comments is knowing when not to write them. Reserve comments for:
 - Complex logic requiring external context (like datasheets)
 - Non-obvious algorithms or business rules
 - Links to relevant documentation or specifications
@@ -139,7 +139,7 @@ Take time maintain your education on modern best practices for your software pro
 - Don't sacrifice:
   - Generality: Do not create specific code without abstraction layers.
   - Performance: When and where is necessary.
-  - Simplicity: Be simple when possible, break code steps if necessary.
+  - Simplicity: Be simple when possible, break code steps if necessary. Can your code be understood by a reasonable peer in reasonable time? Avoid clever tricks.
   - Portability: Take in mind that the code runs and could run in different platforms.
 
 ## References
