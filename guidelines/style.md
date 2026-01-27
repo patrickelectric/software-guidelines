@@ -59,17 +59,6 @@ void setWidth(int width);
 ## Projects
 
 - Use all lower case and `-` in place of spaces for directory and file names (eg. `src/`, `icon-blue.png`)
-- Use a consistent project structure for all projects
- - General project structure:
-   - `src/` project source code
-   - `lib/` submodules, libraries
-   - `doc/` project documentation
-   - `README.md` project homepage
-   - `.gitignore`
-   - `.travis.yml`
-   - `.appveyor.yml`
- - Python package
- - Arduino library
 
 ## Language-specific
 - c / c++
