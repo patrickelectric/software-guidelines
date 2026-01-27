@@ -48,12 +48,14 @@ All bugs and feature requests should be tracked in github issues. Pull requests 
 
 - All code must be reviewed in a pull request before merging to master
 - Add the `[WIP]` prefix to work-in-progress pull requests that are not ready for merge
+- Consolidate pull requests: Rather than creating multiple PRs for the same feature, update existing open ones with necessary modifications. This preserves review history and helps maintainers track your development progression
+- Keep PRs focused and self-contained: Avoid combining multiple features in one PR. Complex pull requests can balloon during review and become difficult to merge
 - Prepare your pull request so that it is convenient to review
     - Verify that all tests succeed
     - Verify that the software guidelines have been adhered to
     - Verify the patch (no extraneous whitespace or files added)
     - Add supplemental information about testing procedures, usage, and images of ui changes to the pull request description
-- The author should always perform their own review before asking for their peers' review
+- The author should always perform their own review before asking for their peers' review. This catches quality issues early and demonstrates respect for maintainers' volunteer time
 - All tests must pass before approval
 - When you believe your patch is ready to merge, request a review from a maintainer
 
@@ -69,11 +71,72 @@ Milestones are used to collect issues and pull requests that need to go into a p
 
 Tags in the organization project repository are generally reserved for tagging versions. Personal development tags should go in your personal fork.
 
+## Git Tools and Workflows
+
+### Tig (Terminal Interface for Git)
+What's the use of having access to everything, if you can't visualize it. This UI tool enhances repository visualization with commands like `log`, `show`, `status`, `reflog`, `blame`, `grep`, and `refs`. Use `tig --all` for comprehensive branch viewing.
+
+### Commit Fixup
+Correct previous commits without rewriting history manually. Create an alias like:
+```bash
+git config --global alias.fix-old '!f() { git commit --fixup=$(git rev-parse HEAD~$(($1-1))); }; f'
+```
+This lets you fix the nth previous commit with simplified syntax: `git fix-old 3` fixes the 3rd previous commit.
+
+### Interactive Rebase
+Use `git rebase -i --autosquash` to reorganize commits. The autosquash feature automatically applies fixup commits to their target commits, streamlining cleanup workflows.
+
+### Git Reflog
+This command provides access to all tracked changes and project history states. It enables:
+- Recovery from mistakes
+- Branch state exploration before merges or rebases
+- Checkout to any previous point
+
+Pair with `tig reflog` for better visualization.
+
+### Patch Mode Operations
+The `--patch` (or `-p`) flag with `add`, `checkout`, and `stash` enables selective staging of changes. This creates atomic commits containing only necessary modifications and prevents accidental inclusion of unrelated code.
+
+```bash
+git add -p           # Interactively stage hunks
+git checkout -p      # Interactively discard hunks
+git stash -p         # Interactively stash hunks
+```
+
+### Git Stash
+Temporarily remove uncommitted work without losing it.
+```bash
+git stash                           # Stash current changes
+git stash show stash@{0} --all      # Display stashed changes
+git stash apply stash@{0}           # Reapply stashed changes
+```
+
+### Cherry-Pick
+Copy individual commits or commit ranges to different branches for testing or cross-branch application.
+```bash
+git cherry-pick <commit-hash>       # Apply a single commit
+git cherry-pick A..B                # Apply a range of commits
+```
+
+### Recommended Extensions
+- [Delta](https://github.com/dandavison/delta): Syntax-highlighted diff and git output
+- [Git-absorb](https://github.com/tummychow/git-absorb): Automated fixup commit creation
+
 ## References
 
-- [Mastering Git](https://www.packtpub.com/application-development/mastering-git)
+### Books
+- [Mastering Git](https://www.packtpub.com/application-development/mastering-git) (ISBN: 9781783553754)
+- [Pro Git (Free)](https://git-scm.com/book/en/v2)
+
+### Official Documentation
+- [Git SCM](https://git-scm.com/)
+- [Git Repository Layout](https://git-scm.com/docs/gitrepository-layout)
+- [Git Internals: Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
+- [Git Index Format](https://git-scm.com/docs/index-format)
+
+### Articles
+- [Git Index Deep Dive](https://mincong.io/2018/04/28/git-index/)
 - [gitref](http://gitref.org)
-- [progit](http://progit.org)
 - [gitready](http://gitready.com)
 
 ### Patrick posts
