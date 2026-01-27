@@ -76,11 +76,27 @@ void setWidth(int width);
   - Use `()` instead of `(void)` for functions with no parameters
   - Do not add `;` after method definitions
 - Python
-  - Use python3
+  - Use Python 3.11+
   - Use [typehints](https://www.python.org/dev/peps/pep-0484/)
   - Use [PEP8](https://www.python.org/dev/peps/pep-0008/) guidelines when they do not disagree with our own
-- Javascript
-  - Semicolons are required after every statement
+  - Use `uv` as package manager, `black` for formatting, `isort` for imports, `ruff` for linting, `mypy` for type checking
+  - Sort dependencies alphabetically in `pyproject.toml`
+  - Use async programming with FastAPI, asyncio, aiohttp for I/O-bound operations
+- TypeScript / Vue 3
+  - Use TypeScript over JavaScript for type safety
+  - Use Vue 3 Composition API with `<script setup>` syntax
+  - Enable strict mode in `tsconfig.json`
+  - Use explicit type annotations for function parameters and return types
+  - Prefer `interface` over `type` for object shapes
+  - Use `ref()` and `reactive()` for reactive state
+  - Use `yarn` over `npm` for package management
+  - No semicolons (enforced by ESLint)
+  - Use `simple-import-sort` for alphabetically sorted imports
+  - Prefer function declarations over function expressions
+  - Use optional chaining (`?.`) when possible
+  - One component per `.vue` file
+  - Use Vuetify theme colors (`primary`, `success`, etc.) instead of hardcoded colors
+  - Clear intervals/timeouts in `onUnmounted()` or `beforeDestroy()`
 
 ## IDEs
 Here you can find some nice configurations to avoid style problems. 
@@ -109,3 +125,5 @@ Style configuration for *code*:
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 - [Qt API Design Principles](https://wiki.qt.io/API_Design_Principles)
 - [Kate Gregory - Naming is Hard: Let's Do Better (CppCon 2019)](https://www.youtube.com/watch?v=MBRoCdtZOYg)
+- [Vue 3 Style Guide](https://vuejs.org/style-guide/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/)

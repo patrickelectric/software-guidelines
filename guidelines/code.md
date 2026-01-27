@@ -96,8 +96,9 @@ Code should be well documented. Strive to make it easy for a new developer to pi
 - All class members should be documented
 - When a variable or method involves specific dimensions/units, the units involved should be made totally clear via explicit names or comments
 - Document temporary variables at their declaration wherever it may be helpful to someone else
-- Large projects and apis should use doxygen-style comments, and old projects should be brought up to this standard
+- C++ projects should use doxygen-style comments
 - Python scripts should use Docstrings
+- TypeScript/JavaScript projects should use JSDoc for classes, functions, methods, interfaces, and enums
 
 ## Testing
 
