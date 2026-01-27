@@ -4,7 +4,7 @@ When contributing to projects owned by other entities, adhere to any guidelines 
 
 ## Code
 
-- In any case, use a consistent style within a particular file or project. 
+- In any case, use a consistent style within a particular file or project.
 - Use braces and hanging indentation for all conditional and loop statements; no one-liners
 - Use camelCase
  - Lead with lowercase for variables and methods (eg. `myMethod`)
@@ -99,7 +99,7 @@ void setWidth(int width);
   - Clear intervals/timeouts in `onUnmounted()` or `beforeDestroy()`
 
 ## IDEs
-Here you can find some nice configurations to avoid style problems. 
+Here you can find some nice configurations to avoid style problems.
 ### Visual Studio Code (Code)
 
 #### Settings
