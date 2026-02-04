@@ -38,21 +38,22 @@ Here you can see a simple list of files that should not be tracked by the versio
 
 ### Branches
 
-The number of branches in the organization repository should be minimized. Generally, push your work to your fork. Branches in the organization repository should be deleted immediately after they are merged. Remember to do your own git housecleaning regularly to avoid a buildup of stale branches. (Note: there is a button on the github pull request page that allows you to delete a branch after merge)
+The number of branches in the organization repository should be minimized. Generally, push your work to your fork. Personal development work belongs in your personal fork. Branches in the organization repository should be deleted immediately after they are merged. Remember to do your own git housecleaning regularly to avoid a buildup of stale branches. (Note: there is a button on the GitHub pull request page that allows you to delete a branch after merge)
 
 ### Issues
 
-All bugs and feature requests should be tracked in github issues. Pull requests that close a particular issue should reference the issue, so that the issue will be [automatically closed](https://help.github.com/articles/closing-issues-using-keywords/) when the pull request is merged. Do not reference github issues in commit messages. This will keep the git repository decoupled from github, and the better option is to call out the problem itself rather than the github issue in the commit message. ie 'fixes *bug that does this*' instead of 'fixes #124'.
+All bugs and feature requests should be tracked in GitHub Issues. Pull requests that close a particular issue should reference the issue, so that the issue will be [automatically closed](https://help.github.com/articles/closing-issues-using-keywords/) when the pull request is merged (e.g., "Fix #123" in PR description). Do not reference GitHub issues in commit titles. This will keep the git repository decoupled from GitHub, and the better option is to call out the problem itself rather than the GitHub issue in the commit title. ie 'Fix *bug that does this*' instead of 'Fix #124'.
 
 ### Pull Requests
 
 - All code must be reviewed in a pull request before merging to master
-- Add the `[WIP]` prefix to work-in-progress pull requests that are not ready for merge
+- **Minimum 1 approval required**
+- Add the `[WIP]` prefix to work-in-progress pull requests that are not ready for merge, or use GitHub's draft PR feature
 - Prepare your pull request so that it is convenient to review
     - Verify that all tests succeed
     - Verify that the software guidelines have been adhered to
     - Verify the patch (no extraneous whitespace or files added)
-    - Add supplemental information about testing procedures, usage, and images of ui changes to the pull request description
+    - Add supplemental information about testing procedures, usage, and images of UI changes to the pull request description
 - The author should always perform their own review before asking for their peers' review
 - All tests must pass before approval
 - When you believe your patch is ready to merge, request a review from a maintainer
@@ -68,6 +69,11 @@ Milestones are used to collect issues and pull requests that need to go into a p
 ### Tags
 
 Tags in the organization project repository are generally reserved for tagging versions. Personal development tags should go in your personal fork.
+
+## Versioning
+
+- Use [Semantic Versioning (SemVer)](https://semver.org/)
+- Tags in organization repositories are reserved for version releases
 
 ## References
 
